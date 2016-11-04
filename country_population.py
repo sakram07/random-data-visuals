@@ -4,7 +4,7 @@ import unicodecsv as csv
 x = []
 y = []
 
-country_code = "LTU" # For different graph, change this variable
+country_code = "PSE" # For different graph, change this variable
 
 for j in range (1960, 2016):
     x.append(j)
@@ -14,7 +14,10 @@ with open('data.csv', 'rb') as f:
     for row in reader:
         if (row['Country Code'] == country_code):
             for h in range (1960, 2016):
-                y.append(row[str(h)])
+                if (row[str(h)] != ""):
+                    y.append(row[str(h)])
+                else:
+                    y.append(0)
             break
 
 # matplotlib things
